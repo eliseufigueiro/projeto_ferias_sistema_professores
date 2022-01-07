@@ -1,5 +1,6 @@
 package entidades;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,19 +10,19 @@ public class Turma {
     private Integer id;
     private String nomeTurma;
     private Integer qtAlunos;
-    private Assuntos assuntos;
-    private List<String> dataInicio;
+    private List<Assuntos> assuntos;
     private List<Docentes> docentes;
-    private CalendarioEscolar calendarioEscolars;
+    private String dataInicioDasAulas;
 
     public Turma() {
     }
 
-    public Turma(String nomeTurma, Integer qtAlunos, Assuntos assuntos) {
+    public Turma(String nomeTurma, Integer qtAlunos, List<Assuntos> assuntos) {
         this.id = ++idControle;
         this.nomeTurma = nomeTurma;
         this.qtAlunos = qtAlunos;
         this.assuntos = assuntos;
+        setaDataInicioDasAulas();
     }
 
     public String getNomeTurma() {
@@ -44,22 +45,14 @@ public class Turma {
         this.qtAlunos = qtAlunos;
     }
 
-    public Assuntos getAssuntos() {
+    public List<Assuntos> getAssuntos() {
 
         return assuntos;
     }
 
-    public void setAssuntos(Assuntos assuntos) {
+    public void setAssuntos(List<Assuntos> assuntos) {
 
         this.assuntos = assuntos;
-    }
-
-    public List<String> getDataInicio() {
-        return dataInicio;
-    }
-
-    public void setDataInicio(List<String> dataInicio) {
-        this.dataInicio = dataInicio;
     }
 
     public List<Docentes> getDocentes() {
@@ -72,14 +65,14 @@ public class Turma {
         this.docentes = docentes;
     }
 
-    public CalendarioEscolar getCalendarioEscolars() {
+    public String getDataInicioDasAulas() {
 
-        return calendarioEscolars;
+        return dataInicioDasAulas;
     }
 
-    public void setCalendarioEscolars(CalendarioEscolar calendarioEscolars) {
-
-        this.calendarioEscolars = calendarioEscolars;
+    public void setaDataInicioDasAulas() {
+        CalendarioEscolar calendarioEscolar = new CalendarioEscolar();
+        this.dataInicioDasAulas = CalendarioEscolar.getListaDias().get(0);
     }
 
     @Override
@@ -89,7 +82,7 @@ public class Turma {
                 ", nomeTurma='" + nomeTurma + '\'' +
                 ", qtAlunos=" + qtAlunos +
                 ", assuntos=" + assuntos +
-                ", dataInicio=" + dataInicio +
+                ", dataInicio=" + dataInicioDasAulas +
                 '}';
     }
 }

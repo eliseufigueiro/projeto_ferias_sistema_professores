@@ -6,61 +6,37 @@ import java.time.Year;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-public class CalendarioEscolar<listaDias> {
+public class CalendarioEscolar {
 
-    public List<String> listaDias = new ArrayList<>();//DB lista todos os dias do ano de segunda a sexta
-    private Integer anoletivo;
+    public static List<String> listaDias = new ArrayList<>();//DB lista todos os dias do ano de segunda a sexta
 
     public CalendarioEscolar() {
+        calendarioEscolar();
     }
 
-    public CalendarioEscolar(Integer anoletivo) {
+    public static List<String> getListaDias() {
 
-        this.anoletivo = anoletivo;
-    }
-
-    public List<String> getListaDias() {
         return listaDias;
-    }
-
-    public Integer getAnoletivo() {
-        return anoletivo;
-    }
-
-    public void setAnoletivo(Integer anoletivo) {
-        this.anoletivo = anoletivo;
     }
 
     public void calendarioEscolar() {
 
-        GregorianCalendar cg = new GregorianCalendar();
-        System.out.println(cg.getWeeksInWeekYear());
+        LocalDate dataAtual = LocalDate.now();
+        int anoAtual = dataAtual.getYear();
+        //System.out.println("Ano Atual: " + anoAtual);
 
-        Year ano = Year.of(getAnoletivo());
+        Year ano = Year.of(anoAtual);
+
         for (int dia = 1; dia <= ano.length(); dia++) {
             LocalDate data = ano.atDay(dia);
-
-            DateTimeFormatter formatar = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
             if (!data.getDayOfWeek().equals(DayOfWeek.SATURDAY) &&
                     !data.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
 
-                if (data.getDayOfWeek().equals(DayOfWeek.MONDAY)) {
-                    listaDias.add("SEGUNDA " + data.format(formatar));
-                }
-                if (data.getDayOfWeek().equals(DayOfWeek.TUESDAY)) {
-                    listaDias.add("TERÇA   " + data.format(formatar));
-                }
-                if (data.getDayOfWeek().equals(DayOfWeek.WEDNESDAY)) {
-                    listaDias.add("QUARTA  " + data.format(formatar));
-                }
-                if (data.getDayOfWeek().equals(DayOfWeek.THURSDAY)) {
-                    listaDias.add("QUINTA  " + data.format(formatar));
-                }
-                if (data.getDayOfWeek().equals(DayOfWeek.FRIDAY)) {
-                    listaDias.add("SEXTA   " + data.format(formatar));
-                }
+                DateTimeFormatter formatar = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                listaDias.add(data.format(formatar));
             }
+
         }
     }
 }
