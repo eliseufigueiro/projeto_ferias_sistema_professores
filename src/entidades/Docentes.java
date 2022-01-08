@@ -51,7 +51,7 @@ public class Docentes {
                 "id=" + id +
                 ", nomeDocente='" + nomeDocente + '\'' +
                 ", cpf='" + cpf + '\'' +
-                ", turmaAtual=" + turmaAtual +
                 '}' + "\n";
     }
+
 }

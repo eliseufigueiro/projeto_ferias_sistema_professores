@@ -12,6 +12,7 @@ public class Turma {
     private Integer qtAlunos;
     private List<Assuntos> assuntos;
     private List<Docentes> docentes;
+    private CalendarioEscolar calendario;
     private String dataInicioDasAulas;
 
     public Turma() {
@@ -23,6 +24,7 @@ public class Turma {
         this.qtAlunos = qtAlunos;
         this.assuntos = assuntos;
         setaDataInicioDasAulas();
+        setaCalendarioAnual();
     }
 
     public String getNomeTurma() {
@@ -65,6 +67,11 @@ public class Turma {
         this.docentes = docentes;
     }
 
+    public CalendarioEscolar getCalendario() {
+
+        return calendario;
+    }
+
     public String getDataInicioDasAulas() {
 
         return dataInicioDasAulas;
@@ -72,7 +79,13 @@ public class Turma {
 
     public void setaDataInicioDasAulas() {
         CalendarioEscolar calendarioEscolar = new CalendarioEscolar();
-        this.dataInicioDasAulas = CalendarioEscolar.getListaDias().get(0);
+        this.dataInicioDasAulas = calendarioEscolar.primeiroDiaLetivo();
+    }
+
+    public void setaCalendarioAnual() {
+
+        CalendarioEscolar calendarioEscolar = new CalendarioEscolar();
+        this.calendario = calendarioEscolar;
     }
 
     @Override
@@ -85,4 +98,5 @@ public class Turma {
                 ", dataInicio=" + dataInicioDasAulas +
                 '}';
     }
+
 }

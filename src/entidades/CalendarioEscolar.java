@@ -7,19 +7,15 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class CalendarioEscolar {
-
-    public static List<String> listaDias = new ArrayList<>();//DB lista todos os dias do ano de segunda a sexta
+    private List<String> calendarioEscolar;
 
     public CalendarioEscolar() {
-        calendarioEscolar();
+        this.calendarioEscolar = calendarioEscolar();
+        //calendariosemanas();
     }
 
-    public static List<String> getListaDias() {
-
-        return listaDias;
-    }
-
-    public void calendarioEscolar() {
+    public List<String> calendarioEscolar() {
+        List<String> listaDias = new ArrayList<>();
 
         LocalDate dataAtual = LocalDate.now();
         int anoAtual = dataAtual.getYear();
@@ -38,6 +34,23 @@ public class CalendarioEscolar {
             }
 
         }
+        return listaDias;
+    }
+
+    public void calendariosemanas() {
+
+    }
+
+    public String primeiroDiaLetivo() {
+
+        return calendarioEscolar.get(0);
+    }
+
+    @Override
+    public String toString() {
+        return "CalendarioEscolar: \n" +
+                calendarioEscolar
+                ;
     }
 }
 

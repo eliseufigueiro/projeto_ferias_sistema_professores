@@ -2,8 +2,10 @@ package aplicacao;
 
 import entidades.*;
 import servico.CadastrarDocente;
+import servico.CadastrarTurma;
 import servico.Historico;
 
+import java.io.IOException;
 import java.util.*;
 
 public class Escola {
@@ -15,7 +17,7 @@ public class Escola {
 
     static Scanner sc = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         Locale.setDefault(Locale.US);
 
@@ -24,7 +26,6 @@ public class Escola {
 
         int opcao = 0;
         do {
-
             escola.menu();
 
             System.out.print("Escolha um opção: ");
@@ -33,20 +34,36 @@ public class Escola {
             switch (opcao) {
 
                 case 1:
+                    CadastrarTurma cadastrarTurma = new CadastrarTurma();
+                    cadastrarTurma.cadastrarTurma();
+                    System.out.print("\nPressione Enter para continuar!");
+                    System.in.read();
                     break;
                 case 2:
                     CadastrarDocente cadastrarDocente = new CadastrarDocente();
                     cadastrarDocente.cadastrarDocente();
+                    System.out.print("\nPressione Enter para continuar!");
+                    System.in.read();
                     break;
                 case 3:
+                    System.out.print("\nPressione Enter para continuar!");
+                    System.in.read();
                     break;
                 case 4:
+                    Historico historicoT = new Historico();
+                    historicoT.listaTurmas();
+                    System.out.print("\nPressione Enter para continuar!");
+                    System.in.read();
                     break;
                 case 5:
-                    Historico historico = new Historico();
-                    historico.listarDocentes();
+                    Historico historicoD = new Historico();
+                    historicoD.listarDocentes();
+                    System.out.print("\nPressione Enter para continuar!");
+                    System.in.read();
                     break;
                 case 6:
+                    System.out.print("\nPressione Enter para continuar!");
+                    System.in.read();
                     break;
                 case 0:
                     break;
@@ -90,10 +107,9 @@ public class Escola {
         System.out.println(docentes1 + "\n");
         System.out.println(docentesList + "\n");
 
-        String teste = CalendarioEscolar.getListaDias().get(0);
-        System.out.println(teste);
-        System.out.println();
-        //System.out.println(CalendarioEscolar.listaDias);
+        //System.out.println(calendarioEscolar.calendarioEscolar());
+        System.out.println(turmaA.getDataInicioDasAulas());
+        System.out.println(turmaA.getCalendario());
         System.out.println("======================================================");
 
     }//Para testes
@@ -109,4 +125,5 @@ public class Escola {
                 "6. Listar um docente e suas semanas de aula já definidas\n" +
                 "0. Sair\n");
     }//Menu principal
+
 }
