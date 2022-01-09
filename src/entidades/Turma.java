@@ -10,10 +10,11 @@ public class Turma {
     private Integer id;
     private String nomeTurma;
     private Integer qtAlunos;
-    private List<Assuntos> assuntos;
-    private List<Docentes> docentes;
+    private List<Assuntos> assuntos = new ArrayList<>();
+    private List<Docentes> docentes = new ArrayList<>();
     private CalendarioEscolar calendario;
     private String dataInicioDasAulas;
+    private List<String> agendaEscolar = new ArrayList<>();
 
     public Turma() {
     }
@@ -25,6 +26,10 @@ public class Turma {
         this.assuntos = assuntos;
         setaDataInicioDasAulas();
         setaCalendarioAnual();
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public String getNomeTurma() {
@@ -88,15 +93,32 @@ public class Turma {
         this.calendario = calendarioEscolar;
     }
 
+    public List<String> getAgendaEscolar() {
+
+        return agendaEscolar;
+    }
+
+    public void setAgendaEscolar(List<String> agendaEscolar) {
+
+        this.agendaEscolar = agendaEscolar;
+    }
+
+    //Add Docente a lista turmaAtual do obj
+    public void addDocente(Docentes novoDocente) {
+
+        docentes.add(novoDocente);
+    }
+
     @Override
     public String toString() {
-        return "Turma{" +
-                "id=" + id +
-                ", nomeTurma='" + nomeTurma + '\'' +
-                ", qtAlunos=" + qtAlunos +
-                ", assuntos=" + assuntos +
-                ", dataInicio=" + dataInicioDasAulas +
-                '}';
+        return
+                "\nID = " + id +
+                ", TURMA = " + nomeTurma +
+                ", QT. ALUNOS = " + qtAlunos +
+                ", ASSUNTOS = " + assuntos +
+                ", DOCENTES = " + docentes +
+                ", INÍCIO DAS AULAS = " + dataInicioDasAulas + "\n"
+                ;
     }
 
 }

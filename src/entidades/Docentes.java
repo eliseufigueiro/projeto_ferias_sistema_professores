@@ -9,7 +9,7 @@ public class Docentes {
     private Integer id;
     private String nomeDocente;
     private String cpf;
-    private List<Turma> turmaAtual;
+    private List<Turma> turmaAtual = new ArrayList<>();
 
     public Docentes() {
     }
@@ -18,6 +18,11 @@ public class Docentes {
         this.id = ++idControle;
         this.nomeDocente = nomeDocente;
         this.cpf = cpf;
+    }
+
+    public Integer getId() {
+
+        return id;
     }
 
     public String getNomeDocente() {
@@ -35,9 +40,9 @@ public class Docentes {
         return cpf;
     }
 
-    public Turma getTurmaAtual() {
+    public List<Turma> getTurmaAtual() {
 
-        return (Turma) turmaAtual;
+        return turmaAtual;
     }
 
     public void setTurmaAtual(List<Turma> turmaAtual) {
@@ -45,13 +50,19 @@ public class Docentes {
         this.turmaAtual = turmaAtual;
     }
 
-    @Override
-    public String toString() {
-        return "Docentes{" +
-                "id=" + id +
-                ", nomeDocente='" + nomeDocente + '\'' +
-                ", cpf='" + cpf + '\'' +
-                '}' + "\n";
+    //Add Turma a lista turmaAtual do obj
+    public void addTurma(Turma novaTurma) {
+
+        turmaAtual.add(novaTurma);
     }
 
+    @Override
+    public String toString() {
+        return
+                "\nID = " + id +
+                        ", DOCENTE = " + nomeDocente +
+                        ", CPF = " + cpf
+                        //", TURMA ATUAL = " + turmaAtual
+                ;
+    }
 }

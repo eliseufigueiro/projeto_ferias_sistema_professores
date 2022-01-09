@@ -3,17 +3,19 @@ package aplicacao;
 import entidades.*;
 import servico.CadastrarDocente;
 import servico.CadastrarTurma;
+import servico.DefinirDocenteParaUmaDeterminadaTurma;
 import servico.Historico;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.*;
 
 public class Escola {
 
     public static List<Turma> turmaList = new ArrayList<>();//DB Turmas
     public static List<Docentes> docentesList = new ArrayList<>();//DB Docentes
-    public static List<CalendarioEscolar> semanasList = new ArrayList<>();//DB Semanas
-    public static List<Historico> historicoList = new ArrayList<>();//DB Historico
+    public static List<String> semanasList = new ArrayList<>();//DB Semanas
+    //public static List<Historico> historicoList = new ArrayList<>();//DB Historico
 
     static Scanner sc = new Scanner(System.in);
 
@@ -46,6 +48,8 @@ public class Escola {
                     System.in.read();
                     break;
                 case 3:
+                    DefinirDocenteParaUmaDeterminadaTurma definirDocenteParaUmaDeterminadaTurma = new DefinirDocenteParaUmaDeterminadaTurma();
+                    definirDocenteParaUmaDeterminadaTurma.docenteToTurma();
                     System.out.print("\nPressione Enter para continuar!");
                     System.in.read();
                     break;
@@ -62,6 +66,7 @@ public class Escola {
                     System.in.read();
                     break;
                 case 6:
+                    System.out.println();
                     System.out.print("\nPressione Enter para continuar!");
                     System.in.read();
                     break;
@@ -77,38 +82,45 @@ public class Escola {
     }
 
     public void debug() {
-        List<Turma> list = new ArrayList<>();//DB
-
         //Base de testes
         Turma turmaA = new Turma("A", 25, List.of(Assuntos.JAVA, Assuntos.SQL));
         turmaList.add(turmaA);
-        Turma turmaB = new Turma("B", 23, Collections.singletonList(Assuntos.SQL));
+        Turma turmaB = new Turma("B", 23, List.of(Assuntos.SQL));
         turmaList.add(turmaB);
-
-        //Teste retirar turma da LISTA GERAL e coloca na lista do docente
-        List<Turma> turmaAtual = new ArrayList<>();
-        for (Turma turmas : turmaList) {
-
-            if (turmas == turmaB) {
-                turmaAtual.add(turmaB);
-            }
-        }
-
-        CalendarioEscolar calendarioEscolar = new CalendarioEscolar();
+        Turma turmaC = new Turma("C", 28, List.of(Assuntos.JAVA, Assuntos.SQL, Assuntos.GIT));
+        turmaList.add(turmaC);
 
         Docentes docentes1 = new Docentes("Bob", "123.654.987-78");
+        Docentes docentes2 = new Docentes("Tom", "666.654.977-12");
+
+        docentes1.addTurma(turmaA);// List.of add 1 ou mais obj em uma lista
+        docentes1.addTurma(turmaB);
+
         docentesList.add(docentes1);
-        docentes1.setTurmaAtual(turmaAtual);
+        docentesList.add(docentes2);
+
+        System.out.println(docentes1.getTurmaAtual());
 
         System.out.println("======================================================");
-        System.out.println("DEBUG");
+        System.out.println("DEBUG\n");
 
+        System.out.println("TURMAS TESTE");
         System.out.println(turmaList + "\n");
-        System.out.println(docentes1 + "\n");
+
+        System.out.println("DOCENTES TESTE");
         System.out.println(docentesList + "\n");
 
-        //System.out.println(calendarioEscolar.calendarioEscolar());
-        System.out.println(turmaA.getDataInicioDasAulas());
+        System.out.println("TURMA TESTE PRIMEIRA DA LISTA");
+        System.out.println(turmaList.get(0));
+
+        System.out.println("TESTE ANO LETIVO");
+        LocalDate dataAtual = LocalDate.now();
+        System.out.println("Ano Letivo: " + dataAtual.getYear() + "\n");
+
+        System.out.println("TESTE DATA INICIO AULAS");
+        System.out.println(turmaA.getDataInicioDasAulas() + "\n");
+
+        System.out.println("TESTE CALENDARIO TODOS OS DIAS DO ANO");
         System.out.println(turmaA.getCalendario());
         System.out.println("======================================================");
 

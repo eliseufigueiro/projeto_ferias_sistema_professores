@@ -10,7 +10,7 @@ public class CadastrarDocente {
     public void cadastrarDocente() {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("\n2. Cadastrar docentes");
+        System.out.println("\n2. Cadastrar docentes\n");
 
         System.out.print("Nome Docente: ");
         String docente = sc.nextLine();

@@ -7,11 +7,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class CalendarioEscolar {
-    private List<String> calendarioEscolar;
+    private final List<String> calendarioEscolar;
 
     public CalendarioEscolar() {
         this.calendarioEscolar = calendarioEscolar();
-        //calendariosemanas();
     }
 
     public List<String> calendarioEscolar() {
@@ -19,7 +18,6 @@ public class CalendarioEscolar {
 
         LocalDate dataAtual = LocalDate.now();
         int anoAtual = dataAtual.getYear();
-        //System.out.println("Ano Atual: " + anoAtual);
 
         Year ano = Year.of(anoAtual);
 
@@ -37,13 +35,25 @@ public class CalendarioEscolar {
         return listaDias;
     }
 
-    public void calendariosemanas() {
+    public List<String> calendariosemanas(Integer nSemanas) {
+        List<String> listaSemanas = new ArrayList<>();
 
+        Integer nDias = (--nSemanas * 5);//Recebe o numero da semana -1, vezes 5, para achar a semana
+        for (Integer i = nDias; i < nDias + 5; i++) {
+            listaSemanas.add(calendarioEscolar.get(i));
+        }
+
+        return listaSemanas;
     }
 
     public String primeiroDiaLetivo() {
 
         return calendarioEscolar.get(0);
+    }
+
+    public String ultimoDiaLetivo() {
+
+        return calendarioEscolar.get(calendarioEscolar.size() - 1);
     }
 
     @Override
