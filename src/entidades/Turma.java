@@ -1,6 +1,5 @@
 package entidades;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +13,6 @@ public class Turma {
     private List<Docentes> docentes = new ArrayList<>();
     private CalendarioEscolar calendario;
     private String dataInicioDasAulas;
-    private List<String> agendaEscolar = new ArrayList<>();
 
     public Turma() {
     }
@@ -24,11 +22,12 @@ public class Turma {
         this.nomeTurma = nomeTurma;
         this.qtAlunos = qtAlunos;
         this.assuntos = assuntos;
-        setaDataInicioDasAulas();
         setaCalendarioAnual();
+        setaDataInicioDasAulas();
     }
 
     public Integer getId() {
+
         return id;
     }
 
@@ -82,25 +81,16 @@ public class Turma {
         return dataInicioDasAulas;
     }
 
-    public void setaDataInicioDasAulas() {
-        CalendarioEscolar calendarioEscolar = new CalendarioEscolar();
-        this.dataInicioDasAulas = calendarioEscolar.primeiroDiaLetivo();
-    }
-
+    //Metodos auxiliares
     public void setaCalendarioAnual() {
 
         CalendarioEscolar calendarioEscolar = new CalendarioEscolar();
         this.calendario = calendarioEscolar;
     }
 
-    public List<String> getAgendaEscolar() {
-
-        return agendaEscolar;
-    }
-
-    public void setAgendaEscolar(List<String> agendaEscolar) {
-
-        this.agendaEscolar = agendaEscolar;
+    public void setaDataInicioDasAulas() {
+        //CalendarioEscolar calendarioEscolar = new CalendarioEscolar();
+        this.dataInicioDasAulas = calendario.primeiroDiaLetivo();
     }
 
     //Add Docente a lista turmaAtual do obj
@@ -113,11 +103,11 @@ public class Turma {
     public String toString() {
         return
                 "\nID = " + id +
-                ", TURMA = " + nomeTurma +
-                ", QT. ALUNOS = " + qtAlunos +
-                ", ASSUNTOS = " + assuntos +
-                ", DOCENTES = " + docentes +
-                ", INÍCIO DAS AULAS = " + dataInicioDasAulas + "\n"
+                        ", TURMA = " + nomeTurma +
+                        ", QT. ALUNOS = " + qtAlunos +
+                        ", ASSUNTOS = " + assuntos +
+                        ", DOCENTES = " + docentes +
+                        ", INÍCIO DAS AULAS = " + dataInicioDasAulas + "\n"
                 ;
     }
 

@@ -62,7 +62,6 @@ public class Docentes {
                 "\nID = " + id +
                         ", DOCENTE = " + nomeDocente +
                         ", CPF = " + cpf
-                        //", TURMA ATUAL = " + turmaAtual
                 ;
     }
 }
