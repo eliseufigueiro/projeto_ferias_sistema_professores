@@ -59,9 +59,9 @@ public class Docentes {
     @Override
     public String toString() {
         return
-                "\nID = " + id +
-                        ", DOCENTE = " + nomeDocente +
-                        ", CPF = " + cpf
+                "[ID: " + id +
+                        ", DOCENTE: " + nomeDocente +
+                        ", CPF: " + cpf + "]"
                 ;
     }
 }

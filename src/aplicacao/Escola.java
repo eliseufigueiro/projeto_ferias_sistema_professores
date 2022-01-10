@@ -14,7 +14,7 @@ public class Escola {
 
     public static List<Turma> turmaList = new ArrayList<>();//DB Turmas
     public static List<Docentes> docentesList = new ArrayList<>();//DB Docentes
-    public static List<String> semanasList = new ArrayList<>();//DB Semanas
+    public static List<List<List<String>>> semanasList = new ArrayList<>();//DB Semanas
     //public static List<Historico> historicoList = new ArrayList<>();//DB Historico
 
     static Scanner sc = new Scanner(System.in);

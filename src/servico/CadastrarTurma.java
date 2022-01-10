@@ -87,7 +87,7 @@ public class CadastrarTurma {
         Escola.turmaList.add(turma);
 
         System.out.println("===========================================");
-        System.out.println("Turma cadastrado com sucesso!");
+        System.out.println("       Turma cadastrado com sucesso!       ");
         System.out.println("===========================================");
     }
 }

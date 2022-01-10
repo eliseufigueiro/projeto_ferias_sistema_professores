@@ -7,8 +7,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class CalendarioEscolar {
-    private final List<String> calendarioEscolar;
-    private static List<List<String>> agendaEscolar = new ArrayList<>();
+    private List<String> calendarioEscolar;
+    protected List<List<List<String>>> agendaEscolar = new ArrayList<>();
 
     public CalendarioEscolar() {
 
@@ -16,10 +16,11 @@ public class CalendarioEscolar {
     }
 
     public List<String> getCalendarioEscolar() {
+
         return calendarioEscolar;
     }
 
-    public static List<List<String>> getAgendaEscolar() {
+    public List<List<List<String>>> getAgendaEscolar() {
 
         return agendaEscolar;
     }
@@ -70,20 +71,11 @@ public class CalendarioEscolar {
         }
 
     }
-    public void addAgendaEscolar(List<String> novaSemana) {
+
+    public void addAgendaEscolar(List<List<String>> novaSemana) {
 
         agendaEscolar.add(novaSemana);
     }
-
-    /*public void printaAgendaLivreOcupada() {
-
-        for (int = 0; i < calendarioEscolar.size(); i + 5){
-
-
-
-        }
-
-    }*/
 
     public String primeiroDiaLetivo() {
 
@@ -96,7 +88,18 @@ public class CalendarioEscolar {
     }
 
     public void printaCalendario() {
+
         System.out.println(calendarioEscolar);
+    }
+
+    public void printaAgendaLivreOcupada() {
+
+        for (int i = 0; i < (calendarioEscolar.size() / 5); i++) {
+
+            System.out.println(calendarioEscolar.get(i));
+
+        }
+
     }
 
     @Override

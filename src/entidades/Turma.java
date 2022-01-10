@@ -108,7 +108,7 @@ public class Turma {
                         ", ASSUNTOS = " + assuntos +
                         ", DOCENTES = " + docentes +
                         ", INÍCIO DAS AULAS = " + dataInicioDasAulas + "\n"
-                ;
+                        ;
     }
 
 }
