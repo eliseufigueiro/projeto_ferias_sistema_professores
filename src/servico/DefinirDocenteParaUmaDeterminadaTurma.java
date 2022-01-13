@@ -216,9 +216,9 @@ public class DefinirDocenteParaUmaDeterminadaTurma {
 
                     }
 
-                    System.out.println("===========================================");
+                    System.out.println("-------------------------------------------");
                     System.out.println("      Docente atribuído com sucesso!       ");
-                    System.out.println("===========================================");
+                    System.out.println("-------------------------------------------");
 
                     System.out.print("\nPressione Enter para continuar!");
                     System.in.read();

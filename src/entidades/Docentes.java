@@ -2,6 +2,7 @@ package entidades;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class Docentes {
 
@@ -59,9 +60,10 @@ public class Docentes {
     @Override
     public String toString() {
         return
-                "[ID: " + id +
-                        ", DOCENTE: " + nomeDocente +
-                        ", CPF: " + cpf + "]"
+                nomeDocente.toUpperCase(Locale.ROOT)
+                        //"ID: " + id +
+                        //", DOCENTE: " + nomeDocente +
+                        //", CPF: " + cpf
                 ;
     }
 }

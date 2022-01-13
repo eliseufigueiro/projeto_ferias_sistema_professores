@@ -1,7 +1,10 @@
 package entidades;
 
+import aplicacao.Escola;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class Turma {
 
@@ -102,13 +105,14 @@ public class Turma {
     @Override
     public String toString() {
         return
-                "\nID = " + id +
-                        ", TURMA = " + nomeTurma +
-                        ", QT. ALUNOS = " + qtAlunos +
-                        ", ASSUNTOS = " + assuntos +
-                        ", DOCENTES = " + docentes +
-                        ", INÍCIO DAS AULAS = " + dataInicioDasAulas + "\n"
-                        ;
+                nomeTurma.toUpperCase(Locale.ROOT)
+                        //"\nID = " + id +
+                        //", TURMA = " + nomeTurma
+                        //", QT. ALUNOS = " + qtAlunos +
+                        //", ASSUNTOS = " + assuntos +
+                        //", DOCENTES = " + docentes +
+                        //", INÍCIO DAS AULAS = " + dataInicioDasAulas + "\n"
+                ;
     }
 
 }

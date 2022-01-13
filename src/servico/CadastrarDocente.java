@@ -21,8 +21,8 @@ public class CadastrarDocente {
         Docentes docentes = new Docentes(docente, cpf);
         Escola.docentesList.add(docentes);
 
-        System.out.println("===========================================");
+        System.out.println("-------------------------------------------");
         System.out.println("      Docente cadastrado com sucesso!      ");
-        System.out.println("===========================================");
+        System.out.println("-------------------------------------------");
     }
 }

@@ -66,7 +66,8 @@ public class Escola {
                     System.in.read();
                     break;
                 case 6:
-                    System.out.println();
+                    Historico historicoDT = new Historico();
+                    historicoDT.listarDocenteESuasSemanas();
                     System.out.print("\nPressione Enter para continuar!");
                     System.in.read();
                     break;
@@ -74,11 +75,10 @@ public class Escola {
                     break;
                 default:
                     System.out.println("Opção inválida, tente novamente!");
-
             }
 
         } while (opcao != 0);
-
+        sc.close();
     }
 
     public void debug() {
@@ -91,15 +91,9 @@ public class Escola {
         turmaList.add(turmaC);
 
         Docentes docentes1 = new Docentes("Bob", "123.654.987-78");
-        Docentes docentes2 = new Docentes("Tom", "666.654.977-12");
-
-        docentes1.addTurma(turmaA);// List.of add 1 ou mais obj em uma lista
-        docentes1.addTurma(turmaB);
-
         docentesList.add(docentes1);
+        Docentes docentes2 = new Docentes("Tom", "666.654.977-12");
         docentesList.add(docentes2);
-
-        System.out.println(docentes1.getTurmaAtual());
 
         System.out.println("======================================================");
         System.out.println("DEBUG\n");
@@ -120,8 +114,8 @@ public class Escola {
         System.out.println("TESTE DATA INICIO AULAS");
         System.out.println(turmaA.getDataInicioDasAulas() + "\n");
 
-        System.out.println("TESTE CALENDARIO TODOS OS DIAS DO ANO");
-        System.out.println(turmaA.getCalendario());
+        //System.out.println("TESTE CALENDARIO TODOS OS DIAS DO ANO");
+        //System.out.println(turmaA.getCalendario());
         System.out.println("======================================================");
 
     }//Para testes

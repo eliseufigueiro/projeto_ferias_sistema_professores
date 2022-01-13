@@ -8,6 +8,7 @@ import entidades.Turma;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class CadastrarTurma {
@@ -16,19 +17,41 @@ public class CadastrarTurma {
 
         Scanner sc = new Scanner(System.in);
         CalendarioEscolar calendarioEscolar = new CalendarioEscolar();
+        String novaTurma;
 
-        System.out.println("\n1. Cadastrar turma\n");
+        System.out.println("-------------------------------------------");
+        System.out.println("            1. Cadastrar turma             ");
+        System.out.println("-------------------------------------------");
 
         LocalDate dataAtual = LocalDate.now();
         System.out.println("Ano Letivo: " + dataAtual.getYear());
 
         System.out.println("Início ano Letivo: " + calendarioEscolar.primeiroDiaLetivo() + "\nFim ano letivo: " + calendarioEscolar.ultimoDiaLetivo() + "\n");
 
-        System.out.print("Nome da Turma: ");
-        String novaTurma = sc.nextLine();
+        boolean valida;
+        do {
+            valida = false;
+            System.out.print("Nome da Turma: ");
+            novaTurma = sc.nextLine();
+
+            for (int i = 0; i < Escola.turmaList.size(); i++) {
+
+                if (novaTurma == Escola.turmaList.get(i).getNomeTurma()) {
+
+                    System.out.println("Turma cadastrada!");
+                    valida = true;
+
+                } else {
+
+                    valida = false;
+
+                }
+            }
+        } while (valida);
 
         System.out.print("Quantidade de Alunos: ");
         Integer qtAlunos = sc.nextInt();
+
 
         int opcao;
         Assuntos assunto = null;
@@ -86,8 +109,8 @@ public class CadastrarTurma {
         Turma turma = new Turma(novaTurma, qtAlunos, assuntosList);
         Escola.turmaList.add(turma);
 
-        System.out.println("===========================================");
+        System.out.println("-------------------------------------------");
         System.out.println("       Turma cadastrado com sucesso!       ");
-        System.out.println("===========================================");
+        System.out.println("-------------------------------------------");
     }
 }
