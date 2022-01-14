@@ -25,8 +25,36 @@ public class Historico {
                     "  ASSUNTOS            : " + turmas.getAssuntos() + "\n" +
                     "  DOCENTES            : " + turmas.getDocentes() + "\n" +
                     "  INÍCIO DAS AULAS    : " + turmas.getDataInicioDasAulas() + "\n" +
-                    "  SEMANAS CADASTRADAS : " + turmas.getCalendario().getAgendaEscolar().size() + "\n"
+                    "  SEMANAS CADASTRADAS : " + turmas.getCalendario().getAgendaEscolar().size()
             );
+
+            //Monta o calendário das semanas por número
+            String semanaAtual[] = new String[52];
+            for (int i = 0; i < 52; i++) {
+
+                semanaAtual[i] = "X";
+
+                if (!turmas.getCalendario().getAgendaEscolar().isEmpty()) {
+
+                    for (List<List<String>> list : turmas.getCalendario().getAgendaEscolar()) {
+
+                        if (i == Integer.parseInt(list.get(0).get(0))) {
+
+                            semanaAtual[i - 1] = String.valueOf(Integer.parseInt(list.get(0).get(0)));
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+            for (int i = 0; i < 52; i++) {
+
+                System.out.println("[" + semanaAtual[i] + "]");
+
+            }
 
             for (List<List<String>> list : turmas.getCalendario().getAgendaEscolar()) {
 
@@ -119,19 +147,6 @@ public class Historico {
             }
 
 
-            /*for (List<List<String>> list : turmas.getCalendario().getAgendaEscolar()) {
-
-                System.out.println("\n" +
-                        "-----------------------[ SEMANAS ]-----------------------\n" +
-                        "  SEMANA  : " + list.get(0).get(0) + "\n" +
-                        "  SEGUNDA : " + list.get(4).get(0) + " | DOCENTE: " + list.get(2).get(0) + " | ASSUNTO: " + list.get(5) + "\n" +
-                        "  TERÇA   : " + list.get(4).get(1) + " | DOCENTE: " + list.get(2).get(0) + " | ASSUNTO: " + list.get(5) + "\n" +
-                        "  QUARTA  : " + list.get(4).get(2) + " | DOCENTE: " + list.get(3).get(0) + " | ASSUNTO: " + list.get(5) + "\n" +
-                        "  QUINTA  : " + list.get(4).get(3) + " | DOCENTE: " + list.get(3).get(0) + " | ASSUNTO: " + list.get(5) + "\n" +
-                        "  SEXTA   : " + list.get(4).get(4) + " | DOCENTE: " + list.get(3).get(0) + " | ASSUNTO: " + list.get(5) + "\n" +
-                        "---------------------------------------------------------\n");
-
-            }*/
         }
 
     }

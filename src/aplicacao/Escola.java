@@ -106,6 +106,7 @@ public class Escola {
 
         System.out.println("TURMA TESTE PRIMEIRA DA LISTA");
         System.out.println(turmaList.get(0));
+        System.out.println(turmaList.get(0).getCalendario().getAgendaEscolar());
 
         System.out.println("TESTE ANO LETIVO");
         LocalDate dataAtual = LocalDate.now();
